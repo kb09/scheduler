@@ -2,26 +2,24 @@ import React from "react";
 import classNames from "classnames";
 import "components/interviwerListItem.scss";
 
-export default function interviwerListItem(props){
-  const interviewerClass = classNames('interviewer__item',{
-    'interviewer__item--selected': props.selected, //The InterviewerListItem needs a prop to know if it is selected
-    'interviewer__item--image': props.avatar,
+export default function InterviewerListItem(props) {
+  const interviewerClass = classNames("interviewers__item", {
+    "interviewers__item--selected": props.selected //The InterviewerListItem needs a prop to know if it is selected
   });
- 
-  //When clicked, the setInterviewer function should run, taking the interviewer id as a parameter
+  const interviewerPicClass = classNames("interviewers__item-image", { // help with targeting css to img 
+    "interviewers__item--selected-image": props.selected
+  });
+
   return (
     <li className={interviewerClass} onClick={() => props.setInterviewer(props.name)} key={props.id}> 
       <img
-      className={'interviewer__item--image'}
-      src={props.avatar}
-      alt={props.name}
-      
-      
-      
-      /> 
+        className={interviewerPicClass}
+        src={props.avatar}
+        alt={props.name}
+      />
       {props.selected && props.name}
     </li>
   );
-} 
+}
 
 
