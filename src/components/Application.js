@@ -39,6 +39,7 @@ export default function Application(props) {
             day={"Monday"}
             setDay={day => console.log(day)}
           />
+          
         </nav>
         <img
         className="sidebar__lhl sidebar--centered"
