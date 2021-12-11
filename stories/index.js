@@ -86,6 +86,12 @@ storiesOf("Button", module)
   ))
   .add("Wednesday", () => (
     <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
+  ))
+  .add("Thursday", () => (
+    <DayList days={days} value={"Thursday"} onChange={action("setDay")} /> //added
+  ))
+  .add("Friday", () => (
+    <DayList days={days} value={"Friday"} onChange={action("setDay")} /> //added
   ));
 
     const interviewer = {

@@ -1,16 +1,18 @@
-import React from "react";
-import "./styles.scss";
-import Header from "components/Appointment/Header";
-import Empty from "components/Appointment/Empty";
-import Show from "components/Appointment/Show";
 
+import React from "react";
+import "components/Appointment/styles.scss";
+import Header from "components/Appointment/Header";
+import Show from "components/Appointment/Show";
+import Empty from "components/Appointment/Empty";
+// import Form from "components/Appointment/Form";
 
 export default function Appointment(props) {
-  const { id, time, interview } = props;
-  return (
-    <article className='appointment'>
-      <Header time={ time } />
-      { interview ? <Show {...interview} /> : <Empty />}
-    </article>
-  );
-}
+   
+   return (
+    <article className="appointment">
+      <Header time={props.time}></Header> 
+       {props.interview ?  <Show student={props.interview.student} interviewer={props.interview.interviewer}/> :<Empty/>} 
+     </article>
+   );
+ }
+

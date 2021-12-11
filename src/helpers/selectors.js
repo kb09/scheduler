@@ -1,4 +1,6 @@
-export function getAppointmentsForDay(state, day) {
+// All tests are passing
+
+export  function getAppointmentsForDay(state, day) {
   const days = state.days;
   const appointments = state.appointments;
 
@@ -17,3 +19,16 @@ export function getAppointmentsForDay(state, day) {
   }
   return appointmentsForDay;
 }
+
+//return a new object containing the interview data when we pass it an object that contains the interviewer
+
+
+export function getInterview(state, interview) {
+  if (!interview) {
+        return null;
+      } else
+    return {
+      "student": interview.student,
+      "interviewer": state.interviewers[interview.interviewer]
+    }
+};
