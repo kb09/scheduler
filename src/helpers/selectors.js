@@ -20,8 +20,6 @@ export  function getAppointmentsForDay(state, day) {
   return appointmentsForDay;
 }
 
-//return a new object containing the interview data when we pass it an object that contains the interviewer
-
 
 export function getInterview(state, interview) {
   if (!interview) {
@@ -32,3 +30,20 @@ export function getInterview(state, interview) {
       "interviewer": state.interviewers[interview.interviewer]
     }
 };
+
+ export function getInterviewersForDay(state, day) {  
+  const days = state.days;
+  const interviewers = state.interviewers;
+  if (days.length === 0) {
+    return [];
+  }
+  let selectedDay = days.filter((dayObj) => dayObj.name === day)[0];
+  if (!selectedDay) {
+    return [];
+  }
+  let interviewersForDay = [];
+  for (let interviewerId of selectedDay.interviewers) {
+    interviewersForDay.push(interviewers[interviewerId]);
+  }
+  return interviewersForDay;
+ }

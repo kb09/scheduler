@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import "components/Appointment/index.js"
+
 
 
 //test
@@ -19,6 +20,10 @@ export default function Application(props) {
 
 
   let dailyAppointments = [];
+
+//An array with data of the interviewers for a given day
+  const interviewers = getInterviewersForDay(state, state.day);  //**** */
+
 
   const setDay = (day) => setState({ ...state, day });
 
@@ -50,6 +55,7 @@ export default function Application(props) {
         id={appointment.id} 
         time={appointment.time} 
         interview={interview}
+        // interviewers={interviewers} //*********** */
       />
       );
       })
@@ -82,14 +88,3 @@ export default function Application(props) {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-// //////// Requesting days from scheduler API instead of hardcoding it /////////
-
-
