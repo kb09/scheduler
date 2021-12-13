@@ -17,6 +17,14 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
+  function onSave(name, interviewer){
+    const interview = {
+      student:name,
+      interviewer
+    }
+    props.bookInterview(props.id, interview)
+  };
   
    return (
     <article className="appointment">
