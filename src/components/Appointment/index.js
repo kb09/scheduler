@@ -14,22 +14,35 @@ export default function Appointment(props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
-  const SAVE = "SAVE";
+  const SAVING = "SAVING";
 
    
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
-  function onSave(name, interviewer){
+  // function onSave(name, interviewer){
+  //   const interview = {
+  //     student:name,
+  //     interviewer
+  //   }
+  //   transition(SAVE)
+  //   props.bookInterview(props.id, interview)
+  //   transition(SHOW);
+  // };
+
+
+  function save(name, interviewer) {
+    if (name && interviewer) {
+    transition(SAVING);
     const interview = {
-      student:name,
+      student: name,
       interviewer
-    }
-    transition(SAVE)
+    };
     props.bookInterview(props.id, interview)
-    transition(SHOW);
-  };
+    .then(() => transition(SHOW))
+    } 
+  }
   
    return (
     <article className="appointment">
@@ -51,11 +64,11 @@ export default function Appointment(props) {
           value={props.value}
           interviewers={props.interviewers}
           onCancel={back}
-          onSave={onSave}
+          onSave={save}
              />}
-        {mode === SAVE && (
+        {mode === SAVING && (
           <Status 
-          messagev="Saving"
+          message="Saving"
           />
         )}
 
