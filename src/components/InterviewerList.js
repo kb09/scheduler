@@ -15,15 +15,6 @@ const interviewers = props.interviewers.map((interviewer) => {
   selected={interviewer.id === props.value} // added props to value
   setInterviewer={() => props.onChange(interviewer.id)}    // added props to onChange
 />
-
-  // <InterviewerListItem 
-  //   key={interviewer.id}
-  //   name={interviewer.name}
-  //   avatar={interviewer.avatar}
-  //   selected={interviewer.id === props.value} //added value
-  //   setInterviewer={() => props.onChange(interviewer.id)}  // added onChange
-  
-  //   />
   );
 });
   return (
