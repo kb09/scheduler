@@ -41,9 +41,8 @@ export default function Appointment(props) {
 
     
   }
+  function remove() {
 
-
-  function remove(){
     if (mode === CONFIRM) {
       transition(DELETING, true)
       props.deleteInterview(props.id)
@@ -52,9 +51,8 @@ export default function Appointment(props) {
     } else {
       transition(CONFIRM);      
     }
-
   }
-
+   
 
   function edit(){
     transition(EDIT)
