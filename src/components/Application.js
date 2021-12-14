@@ -40,14 +40,31 @@ export default function Application(props) {
       });
   }
 
+  function deleteInterview(id) { // look at book interview 
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+
+    return axios.delete(`/api/appointments/${id}`)
+    .then(res => {
+      setState({...state, appointments})
+      return res
+    })
+  }    
+
 //An array with data of the interviewers for a given day
-let dailyAppointments = getAppointmentsForDay(state, state.day); //00000
+let dailyAppointments = getAppointmentsForDay(state, state.day); 
 
-const interviewers = getInterviewersForDay(state, state.day);  //**** */
+const interviewers = getInterviewersForDay(state, state.day);  
 
-
-  const setDay = (day) => setState({ ...state, day });
-
+const setDay = (day) => setState({ ...state, day });
 
   useEffect(() => {
     Promise.all([
@@ -72,6 +89,7 @@ const interviewers = getInterviewersForDay(state, state.day);  //**** */
             interview={interview}
             interviewers={interviewers}
             bookInterview ={bookInterview}
+            deleteInterview={deleteInterview}
           />
         );
       });
@@ -92,6 +110,8 @@ const interviewers = getInterviewersForDay(state, state.day);  //**** */
               days={state.days} 
               value={state.day} 
               onChange={setDay} 
+              bookInterview ={bookInterview}
+              deleteInterview={deleteInterview}
               />
             </nav>
             <img
@@ -102,7 +122,7 @@ const interviewers = getInterviewersForDay(state, state.day);  //**** */
           </section>
           <section className="schedule">
             {Appointments}
-            <Appointment key="last" time="5pm" />
+            <Appointment key="last" time="5pm" bookInterview={bookInterview} deleteInterview={deleteInterview}  /> 
           </section>
         </main>
       );
