@@ -9,34 +9,56 @@ export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {},
+    appointments: {}, 
     interviewers: {}
   })
 
   const setDay = day => setState(prev =>({...prev, day}));
+  
+  // 
+  const updateSpotsForDay = (state) => {
+    let spots = 0
+    for (let day of state.days) {
+      if (day.name === state.day) {
+        for (let id of day.appointments) {
+          if (state.appointments[id].interview === null) {
+            spots++
+          }}}
+    }
+    const days = state.days.map((day) => {
+      if (day.name !== state.day) {
+        return day
+      } else {
+        return {
+          ...day,
+          spots,
+        }}})
+    setState({ ...state, days })
+  };
+  //
+
+
 
   //
-  function bookInterview(id, interview) {
-    console.log("State", state)
+  function bookInterview(id, interview) { //fine just add
     const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
+      // state.appointments[id], 
+      ...state.appointments[id], 
+      interview:{...interview } // interview = interview 
     };
-
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
-    console.log("appointments", appointments)
     return axios.put(`/api/appointments/${id}`, {interview:interview})
-    .then(res => {
-        setState({...state, appointments})
-        return res
-      })
+    .then(() => {
+      setState({ ...state, appointments })
+      updateSpotsForDay({ ...state, appointments });
+    });
   }
 
   //
-  function deleteInterview(id) {
+  function deleteInterview(id) { 
 
     const appointment = {
       ...state.appointments[id],
@@ -47,12 +69,11 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     }
-
     return axios.delete(`/api/appointments/${id}`)
-    .then(res => {
-      setState({...state, appointments})
-      return res
-    })
+    .then(() => {
+      setState({ ...state, appointments });
+      updateSpotsForDay({ ...state, appointments });
+    });
   
   }  
 
