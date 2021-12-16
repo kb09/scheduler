@@ -36,6 +36,9 @@ npm run storybook
 <img width="1437" alt="3" src="https://user-images.githubusercontent.com/29681554/146295628-687bedea-9100-49f9-8c29-0405af8ae187.png">
 
 
+<img width="1440" alt="7" src="https://user-images.githubusercontent.com/29681554/146295910-c6d44c12-4af6-4d9f-b114-fd8747008783.png">
+
+
 <img width="1434" alt="4" src="https://user-images.githubusercontent.com/29681554/146295643-24bfa663-bffd-4b2b-8c4e-6e832187540b.png">
 
 
