@@ -4,9 +4,9 @@ import "components/interviwerListItem.scss";
 
 export default function InterviewerListItem(props) {
   const interviewerClass = classNames("interviewers__item", {
-    "interviewers__item--selected": props.selected //The InterviewerListItem needs a prop to know if it is selected
+    "interviewers__item--selected": props.selected 
   });
-  const interviewerPicClass = classNames("interviewers__item-image", { // help with targeting css to img 
+  const interviewerPicClass = classNames("interviewers__item-image", { 
     "interviewers__item--selected-image": props.selected
   });
 
