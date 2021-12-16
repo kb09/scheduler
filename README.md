@@ -1,4 +1,4 @@
-# IntEditing scheduler/README.md at master · kb09/schedulererview Scheduler
+# Interview Scheduler
 
 Interview Scheduler is a React application that allows users to book, edit, and cancel interviews from 12pm - 5pm, Monday - Friday.
 
