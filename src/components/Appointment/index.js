@@ -125,7 +125,5 @@ return(
       onConfirm={remove}
       message="Are you sure you would like to delete?" 
     />}
-    {/* {props.interview ?  <Show student={props.interview.student} interviewer={props.interview.interviewer}/> :<Empty/>}  */}
-
   </article>
 )}

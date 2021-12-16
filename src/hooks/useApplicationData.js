@@ -14,8 +14,7 @@ export default function useApplicationData() {
   })
 
   const setDay = day => setState(prev =>({...prev, day}));
-  
-  
+
   const updateSpotsForDay = (state) => {
     let spots = 0
     for (let day of state.days) {
@@ -37,11 +36,10 @@ export default function useApplicationData() {
   };
 
   
-  function bookInterview(id, interview) { //fine just add
+  function bookInterview(id, interview) { 
     const appointment = {
-      // state.appointments[id], 
       ...state.appointments[id], 
-      interview:{...interview } // interview = interview 
+      interview:{...interview } 
     };
     const appointments = {
       ...state.appointments,

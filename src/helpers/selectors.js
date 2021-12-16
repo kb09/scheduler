@@ -31,7 +31,8 @@ export function getInterview(state, interview) {
     }
 };
 
- export function getInterviewersForDay(state, day) {  /************* */
+
+ export function getInterviewersForDay(state, day) {  
   const days = state.days;
   const interviewers = state.interviewers;
   if (days.length === 0) {
