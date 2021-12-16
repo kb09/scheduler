@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "components/Button";
 
+// confirm, cancel, delete 
 export default function Confirm(props){ 
 
-  const { message, onConfirm, onCancel } = props;
+  const { onConfirm, onCancel } = props;
 return (
   <main className="appointment__card appointment__card--confirm">
     <h1 className="text--semi-bold">Delete the appointment?</h1>

@@ -4,7 +4,6 @@ import "components/Appointment/styles.scss";
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
-// import Form from "components/Appointment/Form";
 import useVisualMode from "hooks/useVisualMode";
 import Form from "components/Appointment/Form";
 import Status from "components/Appointment/Status";
@@ -29,6 +28,7 @@ export default function Appointment(props) {
   );
 
   function save(name, interviewer) {
+    if (name && interviewer) {
     transition(SAVING);
     const interview = {
       student: name,
@@ -37,10 +37,11 @@ export default function Appointment(props) {
   
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
-    .catch(error => transition(ERROR_SAVE, true))
-
-    
+    .catch(() => transition(ERROR_SAVE, true))
+    } 
   }
+
+  
   function remove() {
 
     if (mode === CONFIRM) {
